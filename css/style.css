@@ -1,0 +1,30 @@
+[draggable=true] {
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
+h1 .glyphicon{
+  font-size:initial;
+  color: initial;
+  margin-left: 2%;
+  margin-bottom:2%;
+}
+.dropTarget {
+  height: 50em;
+  width: 100%;
+  margin: auto;
+  border: 1px black;
+  overflow:auto;
+}
+.droppable {
+  cursor: move;
+  overflow: auto;
+}
+#dangerZone{
+  display: none;
+  border:2px solid red;
+  position:relative;
+  margin:auto;
+}
+
