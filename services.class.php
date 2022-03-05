@@ -145,7 +145,7 @@ class Services
         header('Location: http://localhost:8888/todoListTest/');
     }
 
-    public function show_total()
+    public function showTotal()
     {
         $total = $this->db->query('SELECT COUNT(*) as total FROM todo');
         $totalCompleted = $this->db->query('SELECT COUNT(*) as total FROM todo WHERE is_done = 1');
@@ -169,17 +169,16 @@ class Services
      *
      * @param string $done
      */
-    public function show_todo($done=0)
+    public function showTodo($done=0)
     {
         $columns = array('title','priority');
         $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
         $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-        $todos = $this->select_todo($done, $column, $sort_order);
+        $todos = $this->selectTodo($done, $column, $sort_order);
 
         $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order);
         $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
-        $add_class = ' class="highlight"';
 
         echo '<table class="table table-striped">';
         echo '<thead>';
@@ -229,14 +228,13 @@ class Services
     /**
      * Select todo
      *
-     * @author mohammad
      * @param string $done
      */
-    private function select_todo($done=0, $column = 'title', $sortOrder = 'ASC')
+    private function selectTodo($done=0, $column = 'title', $sortOrder = 'ASC')
     {
         $query = "SELECT * FROM todo WHERE is_done= $done ORDER BY $column $sortOrder";
 
-        $run_select = $this->run_query_return($query);
+        $run_select = $this->runQueryreturn($query);
 
         if(!$run_select) {
             echo '<h1>Please follow intro.php file instructions ...</h1>';
@@ -249,10 +247,9 @@ class Services
     /**
      * Run sql query and return result
      *
-     * @author mohammad
      * @param string $query
      */
-    private function run_query_return($query)
+    private function runQueryreturn($query)
     {
         return $this->db->query($query);
     }
@@ -260,28 +257,26 @@ class Services
     /**
      * Return todo to undone
      *
-     * @author mohammad
      * @param int $id
      */
-    public function return_todo($id)
+    public function returnTodo($id)
     {
         $now = date("Y-m-d H:i:s");;
 
         $data = [ 'is_done' => 0, 'date_created' => $now ];
         $where = [ 'id' => $id ];
 
-        $this->update_sql_query($data, $where, $table='todo');
+        $this->updateDoneQuery($data, $where, $table='todo');
     }
 
     /**
      * Sql query and run for todo update
      *
-     * @author mohammad
      * @param array $data
      * @param array $where
      * @param string $table
      */
-    public function update_sql_query($data, $where, $table='todo')
+    public function updateDoneQuery($data, $where, $table='todo')
     {
         $cols = [];
         foreach ($data as $key => $val) {
@@ -301,17 +296,16 @@ class Services
     /**
      * Done todo
      *
-     * @author mohammad
      * @param int $id
      */
-    public function done_todo($id)
+    public function doneTodo($id)
     {
         $now = date("Y-m-d H:i:s");;
 
         $data = [ 'is_done' => 1, 'date_created' => $now ];
         $where = [ 'id' => $id ];
 
-        $this->update_sql_query($data, $where, $table='todo');
+        $this->updateDoneQuery($data, $where, $table='todo');
     }
 }
 

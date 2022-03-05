@@ -69,16 +69,16 @@ include('controller.php');
             </div>
         </div>
 
-        <?php $todo->show_total(); ?>
+        <?php $todo->showTotal(); ?>
 
         <br/>
 
         <h3 class="mt-4">Todos: </h3>
-        <?php $todo->show_todo(); ?>
+        <?php $todo->showTodo(); ?>
 
         <br />
         <h3>Completed: </h3>
-        <?php $todo->show_todo(1); ?>
+        <?php $todo->showTodo(1); ?>
 <!--        <div class="row">-->
 <!--            <div class="col-md-4 box" data-category="0">-->
 <!--                <h2 class="text-info text-center" id="countTodo">TO-DO</h2>-->
