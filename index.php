@@ -68,24 +68,35 @@ include('controller.php');
                 </form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 box" data-category="0">
-                <h2 class="text-info text-center" id="countTodo">TO-DO</h2>
-                <div class="dropTarget list-group" id="todoTask">
-                </div>
-            </div>
-            <div class="col-md-4 box" data-category="1">
-                <h1 class="text-info text-center" id="countInprogress">In progress</h1>
-                <div class="dropTarget list-group" id="inprogressTask">
-                </div>
-            </div>
-            <div class="col-md-4 box" data-category="2">
-                <h1 class="text-info text-center" id="countCompleted">Completed<span
-                            class="createTask glyphicon"></span></h1>
-                <div class="dropTarget list-group" id="completedTask">
-                </div>
-            </div>
-        </div>
+
+        <?php $todo->show_total(); ?>
+
+        <br/>
+
+        <h3 class="mt-4">Todos: </h3>
+        <?php $todo->show_todo(); ?>
+
+        <br />
+        <h3>Completed: </h3>
+        <?php $todo->show_todo(1); ?>
+<!--        <div class="row">-->
+<!--            <div class="col-md-4 box" data-category="0">-->
+<!--                <h2 class="text-info text-center" id="countTodo">TO-DO</h2>-->
+<!--                <div class="dropTarget list-group" id="todoTask">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 box" data-category="1">-->
+<!--                <h1 class="text-info text-center" id="countInprogress">In progress</h1>-->
+<!--                <div class="dropTarget list-group" id="inprogressTask">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 box" data-category="2">-->
+<!--                <h1 class="text-info text-center" id="countCompleted">Completed<span-->
+<!--                            class="createTask glyphicon"></span></h1>-->
+<!--                <div class="dropTarget list-group" id="completedTask">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 <script src="js/todo.js"></script>

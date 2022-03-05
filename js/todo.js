@@ -111,7 +111,6 @@ function createTask(taskElement) {
     taskToAppend.appendTo(dropTarget);
 
     const countTodo = todo.childElementCount;
-    console.log('load===' + countTodo)
     document.getElementById("countTodo").innerHTML = `TO-DO (${countTodo})`;
 
     const countInprogress = inprogress.childElementCount;
